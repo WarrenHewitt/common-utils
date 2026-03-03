@@ -1,0 +1,59 @@
+{
+    "name": "@hw/utils",
+    "version": "0.1.0",
+    "description": "A common TypeScript utilities library",
+    "license": "MIT",
+    "type": "module",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "files": [
+        "dist"
+    ],
+    "sideEffects": false,
+    "engines": {
+        "node": ">=18"
+    },
+    "scripts": {
+        "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap --clean",
+        "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
+        "prepare": "lefthook install",
+        "hooks:install": "lefthook install",
+        "commitlint": "commitlint --edit",
+        "test": "vitest run  && npx vite preview --outDir html",
+        "test:watch": "vitest",
+        "test:coverage": "vitest run --coverage",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "eslint . --ext .ts --fix",
+        "format": "prettier . --write",
+        "format:check": "prettier . --check",
+        "typecheck": "tsc --noEmit",
+        "prepublishOnly": "pnpm run build"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "packageManager": "pnpm@10.7.1",
+    "devDependencies": {
+        "@commitlint/cli": "^19.8.1",
+        "@commitlint/config-conventional": "^19.8.1",
+        "@typescript-eslint/eslint-plugin": "^8.44.1",
+        "@typescript-eslint/parser": "^8.44.1",
+        "@vitest/coverage-v8": "^3.2.4",
+        "@vitest/ui": "^4.0.18",
+        "eslint": "^8.57.1",
+        "eslint-config-prettier": "^10.1.8",
+        "lefthook": "^1.11.12",
+        "prettier": "^3.6.2",
+        "tsup": "^8.5.0",
+        "typescript": "^5.9.2",
+        "vitest": "^4.0.18"
+    }
+}
